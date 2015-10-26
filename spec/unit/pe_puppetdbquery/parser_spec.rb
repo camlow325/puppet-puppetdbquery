@@ -1,11 +1,11 @@
 #! /usr/bin/env ruby -S rspec
 
 require 'spec_helper'
-require 'puppetdb/parser'
+require 'pe_puppetdbquery/parser'
 
-describe PuppetDB::Parser do
+describe PePuppetDBQuery::Parser do
   context 'Query parsing' do
-    let(:parser) { PuppetDB::Parser.new }
+    let(:parser) { PePuppetDBQuery::Parser.new }
     it 'should handle empty queries' do
       parser.parse('').should be_nil
     end
@@ -187,7 +187,7 @@ describe PuppetDB::Parser do
   end
 
   context 'facts_query' do
-    let(:parser) { PuppetDB::Parser.new }
+    let(:parser) { PePuppetDBQuery::Parser.new }
     it 'should return a query for all if no facts are specified' do
       parser.facts_query('kernel=Linux').should eq ['in', 'certname', ['extract', 'certname', ['select_fact_contents', ['and', ['=', 'path', ['kernel']], ['=', 'value', 'Linux']]]]]
     end
@@ -202,7 +202,7 @@ describe PuppetDB::Parser do
   end
 
   context 'facts_hash' do
-    let(:parser) { PuppetDB::Parser.new }
+    let(:parser) { PePuppetDBQuery::Parser.new }
     it 'should merge facts into a nested hash' do
       parser.facts_hash([
         { 'certname' => 'ip-172-31-45-32.eu-west-1.compute.internal', 'environment' => 'production', 'name' => 'kernel', 'value' => 'Linux' },

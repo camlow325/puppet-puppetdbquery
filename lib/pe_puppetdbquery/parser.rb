@@ -6,15 +6,15 @@
 
 require 'racc/parser.rb'
 
-require 'puppetdb'
-require 'puppetdb/lexer'
-require 'puppetdb/astnode'
-require 'puppetdb/parser_helper'
-module PuppetDB
-  class Parser < PuppetDB::Lexer
+require 'pe_puppetdbquery'
+require 'pe_puppetdbquery/lexer'
+require 'pe_puppetdbquery/astnode'
+require 'pe_puppetdbquery/parser_helper'
+module PePuppetDBQuery
+  class Parser < PePuppetDBQuery::Lexer
 
 module_eval(<<'...end grammar.racc/module_eval...', 'grammar.racc', 91)
-  include PuppetDB::ParserHelper
+  include PePuppetDBQuery::ParserHelper
 
 ...end grammar.racc/module_eval...
 ##### State transition tables begin ###
@@ -427,4 +427,4 @@ def _reduce_none(val, _values)
 end
 
   end   # class Parser
-  end   # module PuppetDB
+  end   # module PePuppetDBQuery

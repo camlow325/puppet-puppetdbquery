@@ -17,10 +17,10 @@ task :generate => [:lexer, :parser]
 
 desc "Generate Parser"
 task :parser do
-    `racc lib/puppetdb/grammar.racc -o lib/puppetdb/parser.rb --superclass='PuppetDB::Lexer'`
+    `racc lib/pe_puppetdbquery/grammar.racc -o lib/pe_puppetdbquery/parser.rb --superclass='PePuppetDBQuery::Lexer'`
 end
 
 desc "Generate Lexer"
 task :lexer do
-    `rex lib/puppetdb/lexer.rex -o lib/puppetdb/lexer.rb`
+    `rex lib/pe_puppetdbquery/lexer.rex -o lib/pe_puppetdbquery/lexer.rb`
 end

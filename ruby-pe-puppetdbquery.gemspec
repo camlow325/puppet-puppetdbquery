@@ -3,11 +3,11 @@
 lib = File.expand_path('../lib/', __FILE__)
 $:.unshift lib unless $:.include?(lib)
 
-require 'puppetdb'
+require 'pe_puppetdbquery'
 
 Gem::Specification.new do |s|
-  s.name        = "ruby-puppetdb"
-  s.version     = PuppetDB::VERSION.join '.'
+  s.name        = "ruby-pe-puppetdbquery"
+  s.version     = PePuppetDBQuery::VERSION.join '.'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Erik Dalen"]
   s.email       = ["erik.gustav.dalen@gmail.com"]

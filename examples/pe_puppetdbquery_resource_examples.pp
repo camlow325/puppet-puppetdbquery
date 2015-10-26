@@ -13,7 +13,7 @@
 
 # this syntax is a little strange ...
 # it makes the resource look a little extraneous
-$rabbit_resources = query_resource('Class[Nova::Rabbitmq]')
+$rabbit_resources = pe_puppetdbquery_resource('Class[Nova::Rabbitmq]')
 
 $rabbit_class      = $rabbit_resources['Class[Nova::Rabbitmq]']
 $rabbit_params     = $rabbit_class['parameters']
@@ -35,7 +35,7 @@ notice("vnc proxy host ${vnc_proxy_host}")
 # check the size of this thing and make some decisions
 
 # figure out sql connection
-$nova_db_host      = unique(query_nodes('Class[Nova::Db::Mysql]', 'fqdn'))
+$nova_db_host      = unique(pe_puppetdbquery_nodes('Class[Nova::Db::Mysql]', 'fqdn'))
 $nova_db_resources = query_resource('Class[Nova::Db::Mysql]', 'architecture=amd64')
 $nova_db_class     = $nova_db_resources['Class[Nova::Db::Mysql]']
 $nova_db_params    = $nova_db_class['parameters']

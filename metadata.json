@@ -1,11 +1,11 @@
 {
-  "name": "dalen-puppetdbquery",
+  "name": "puppetlabs-pe_puppetdbquery",
   "version": "2.0.2",
-  "author": "Erik Dalen <erik.gustav.dalen@gmail.com>",
+  "author": "puppetlabs",
   "summary": "Query functions for the PuppetDB API",
   "license": "Apache-2.0",
-  "source": "https://github.com/dalen/puppet-puppetdbquery.git",
-  "project_page": "https://github.com/dalen/puppet-puppetdbquery",
-  "issues_url": "https://github.com/dalen/puppet-puppetdbquery/issues",
+  "source": "https://github.com/puppetlabs/puppetlabs-pe_puppetdbquery.git",
+  "project_page": "https://github.com/puppetlabs/puppetlabs-pe_puppetdbquery.git",
+  "issues_url": "https://tickets.puppetlabs.com/browse/MODULES",
   "dependencies": [ ]
 }

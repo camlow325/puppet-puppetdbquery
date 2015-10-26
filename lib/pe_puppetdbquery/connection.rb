@@ -1,8 +1,8 @@
-require 'puppetdb'
+require 'pe_puppetdbquery'
 
-class PuppetDB::Connection
+class PePuppetDBQuery::Connection
   require 'rubygems'
-  require 'puppetdb/parser'
+  require 'pe_puppetdbquery/parser'
   require 'uri'
   require 'puppet'
   require 'puppet/util/logging'

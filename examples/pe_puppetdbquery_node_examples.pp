@@ -7,6 +7,6 @@
 # munge to be unique if you dont want duplicates to cause failures
 #$nodes = unique(query_nodes('Package["mysql-server"] and architecture=amd64', 'fqdn'))
 
-$nodes = unique(query_nodes('Package["mysql-server"] and architecture=amd64', 'fqdn'))
+$nodes = unique(pe_puppetdbquery_nodes('Package["mysql-server"] and architecture=amd64', 'fqdn'))
 
 notify { $nodes: }

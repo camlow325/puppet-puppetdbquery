@@ -1,9 +1,9 @@
 # vim: syntax=ruby
 
 require 'yaml'
-require 'puppetdb'
+require 'pe_puppetdbquery'
 
-class PuppetDB::Lexer
+class PePuppetDBQuery::Lexer
 macro
 STR        [\w_:]
 rule

@@ -6,6 +6,7 @@ describe "the query_facts function" do
   let(:scope) { PuppetlabsSpec::PuppetInternals.scope }
 
   it "should exist" do
-    Puppet::Parser::Functions.function("query_facts").should == "function_query_facts"
+    Puppet::Parser::Functions.function("pe_puppetdbquery_facts").should ==
+        "function_pe_puppetdbquery_facts"
   end
 end

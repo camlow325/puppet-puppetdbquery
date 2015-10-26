@@ -1,4 +1,4 @@
-class PuppetDB::ASTNode
+class PePuppetDBQuery::ASTNode
   attr_accessor :type, :value, :children
 
   def initialize(type, value, children = [])

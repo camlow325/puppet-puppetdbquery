@@ -1,4 +1,5 @@
-Puppet::Parser::Functions.newfunction(:query_resources, type: :rvalue, arity: -3, doc: <<-EOT
+Puppet::Parser::Functions.newfunction(:pe_puppetdbquery_resources, type:
+    :rvalue, arity: -3, doc: <<-EOT
 
   Accepts two or three arguments: a query used to discover nodes, a
   resource query for the resources that should be returned from
@@ -14,19 +15,19 @@ Puppet::Parser::Functions.newfunction(:query_resources, type: :rvalue, arity: -3
 
     Returns the parameters and such for the ntp class for all CentOS nodes:
 
-      query_resources('operatingsystem=CentOS', 'Class["ntp"]')
+      pe_puppetdbquery_resources('operatingsystem=CentOS', 'Class["ntp"]')
 
     Returns information on the apache user on all nodes that have apache installed on port 443:
 
-      query_resources('Class["apache"]{ port = 443 }', 'User["apache"]')
+      pe_puppetdbquery_resources('Class["apache"]{ port = 443 }', 'User["apache"]')
 
     Returns the parameters and such for the apache class for all nodes:
 
-      query_resources(false, 'Class["apache"]')
+      pe_puppetdbquery_resources(false, 'Class["apache"]')
 
     Returns the parameters for the apache class for all nodes in a flat array:
 
-      query_resources(false, 'Class["apache"]', false)
+      pe_puppetdbquery_resources(false, 'Class["apache"]', false)
 
 EOT
                                      ) do |args|
@@ -36,16 +37,16 @@ EOT
   # This is needed if the puppetdb library isn't pluginsynced to the master
   $LOAD_PATH.unshift File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '..'))
   begin
-    require 'puppetdb/connection'
+    require 'pe_puppetdbquery/connection'
   ensure
     $LOAD_PATH.shift
   end
 
-  PuppetDB::Connection.check_version
+  PePuppetDB::Connection.check_version
 
   uri = URI(Puppet::Util::Puppetdb.config.server_urls.first)
-  puppetdb = PuppetDB::Connection.new(uri.host, uri.port)
-  parser = PuppetDB::Parser.new
+  puppetdb = PePuppetDBQuery::Connection.new(uri.host, uri.port)
+  parser = PePuppetDBQuery::Parser.new
   nodequery = parser.parse nodequery, :facts if nodequery and nodequery.is_a? String
   resquery = parser.parse resquery, :none if resquery and resquery.is_a? String
 

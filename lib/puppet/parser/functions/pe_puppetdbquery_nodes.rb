@@ -1,4 +1,5 @@
-Puppet::Parser::Functions.newfunction(:query_nodes, type: :rvalue, arity: -2, doc: <<-EOT
+Puppet::Parser::Functions.newfunction(:pe_puppetdbquery_nodes, type: :rvalue,
+    arity: -2, doc: <<-EOT
 
   accepts two arguments, a query used to discover nodes, and a optional
   fact that should be returned.
@@ -18,16 +19,16 @@ EOT
   # This is needed if the puppetdb library isn't pluginsynced to the master
   $LOAD_PATH.unshift File.expand_path(File.join(File.dirname(__FILE__), '..', '..', '..'))
   begin
-    require 'puppetdb/connection'
+    require 'pe_puppetdbquery/connection'
   ensure
     $LOAD_PATH.shift
   end
 
-  PuppetDB::Connection.check_version
+  PePuppetDBQuery::Connection.check_version
 
   uri = URI(Puppet::Util::Puppetdb.config.server_urls.first)
-  puppetdb = PuppetDB::Connection.new(uri.host, uri.port)
-  parser = PuppetDB::Parser.new
+  puppetdb = PePuppetDBQuery::Connection.new(uri.host, uri.port)
+  parser = PePuppetDBQuery::Parser.new
   if fact
     query = parser.facts_query query, [fact]
     puppetdb.query(:facts, query).collect { |f| f['value'] }
