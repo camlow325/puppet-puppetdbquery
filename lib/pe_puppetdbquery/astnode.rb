@@ -78,10 +78,11 @@ class PePuppetDBQuery::ASTNode
     when :number
       value
     when :date
-      require 'chronic'
-      ret = Chronic.parse(value, :guess => false).first.iso8601
-      fail "Failed to parse datetime: #{value}" if ret.nil?
-      ret
+      fail "AST parsing / chronic gem for date not currently supported."
+      #require 'chronic'
+      #ret = Chronic.parse(value, :guess => false).first.iso8601
+      #fail "Failed to parse datetime: #{value}" if ret.nil?
+      #ret
     when :booleanop
       [value.to_s, *evaluate_children(mode)]
     when :subquery

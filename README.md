@@ -11,8 +11,6 @@ Requirements
 
 PuppetDB terminus is required for the Puppet functions, but not for the face.
 
-To parse date queries the Ruby gem "chronic" is required.
-
 Required PuppetDB version
 -------------------------
 
@@ -41,6 +39,8 @@ values, use quotation marks around them to search for them as strings instead.
 
 A @ sign before a string causes it to be interpreted as a date parsed with
 [chronic](https://github.com/mojombo/chronic). For example `@"2 hours ago"`.
+Note that date parsing is not currently supported, to avoid having `chronic`
+be installed.
 
 A # sign can be used to do a subquery, against the nodes endpoint for example to
 query the `report_timestamp`, `catalog_timestamp` or `facts_timestamp` fields.
