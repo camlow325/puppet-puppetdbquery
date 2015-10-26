@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/dalen/puppet-puppetdbquery.png)](https://travis-ci.org/dalen/puppet-puppetdbquery)
-
 Pe PuppetDB query tools
 =======================
 
